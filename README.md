@@ -10,6 +10,8 @@ Used for distributing my VIM configuration around for developing in C, Rust, and
 
 ### How do I get set up?
 
+First make sure you are using a current full version of VIM, meaning not VIM-tiny or VI.
+
 Download the .vimrc file and put it in the home directory, or clone the repo and create
 a symbolic link.  (i.e. ~/.vimrc)
 
