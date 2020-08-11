@@ -78,8 +78,8 @@ set incsearch
 set cursorline
 
 " Mappings
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 nnoremap <C-j> :resize -2<CR>
 nnoremap <C-k> :resize +2<CR>
 nnoremap <C-h> :vertical resize -2<CR>
@@ -104,6 +104,26 @@ set t_Co=256
 "let g:rehash256 = 1
 "let g:molokai_original = 1
 colorscheme molokai
+if has('terminal')
+    let g:terminal_ansi_colors = [
+        \ '#1F1F1F',
+        \ '#F92672',
+        \ '#A6E22E',
+        \ '#E69F66',
+        \ '#6699DF',
+        \ '#FD5FF0',
+        \ '#A1EFE4',
+        \ '#75715E',
+        \ '#3E3D32',
+        \ '#F92672',
+        \ '#A6E22E',
+        \ '#E6DB74',
+        \ '#66D9EF',
+        \ '#FD5FF0',
+        \ '#A1EFE4',
+        \ '#F8F8F2'
+    \ ]
+endif
 
 " ----------- Airline -----------
 let g:airline_theme='molokai'
