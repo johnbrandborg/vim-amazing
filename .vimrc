@@ -33,7 +33,6 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'itchyny/lightline.vim' " Simpler than Airline
 Plug 'tomasr/molokai'
 Plug 'valloric/youcompleteme', {'do': function('BuildYCM')}
 Plug 'preservim/nerdcommenter'
@@ -80,6 +79,8 @@ set cursorline
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType rust map <buffer> <F5> :w<CR>:exec '!cargo run' shellescape(@%, 1)<CR>
+autocmd FileType rust imap <buffer> <F5> <esc>:w<CR>:exec '!cargo run' shellescape(@%, 1)<CR>
 nnoremap <C-j> :resize -2<CR>
 nnoremap <C-k> :resize +2<CR>
 nnoremap <C-h> :vertical resize -2<CR>
@@ -101,8 +102,6 @@ set noshowmode " Lightline or Airline display mode
 
 " ----------- Theme -----------
 set t_Co=256
-"let g:rehash256 = 1
-"let g:molokai_original = 1
 colorscheme molokai
 if has('terminal')
     let g:terminal_ansi_colors = [
@@ -129,7 +128,7 @@ endif
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1 " Disable if not available
 
 " ---------- Lightline ---------- 
 set laststatus=2 " Lightline needs this generally
@@ -158,7 +157,7 @@ let g:netrw_liststyle = 3
 
 " ---------- Syntastic ----------
 let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_auto_loc_list = 1 " Some may like this. Prefer to :lw
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 " The following can be used if you don't want to use YCM
@@ -173,6 +172,8 @@ nnoremap <leader>yg :YcmCompleter GoTo<CR>
 
 " ---------- GitIgnore ---------- 
 autocmd VimEnter * :WildignoreFromGitignore
+
+" ---------- Fugitive ---------- 
 nmap <leader>gs :G<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
