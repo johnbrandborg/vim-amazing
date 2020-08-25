@@ -5,11 +5,12 @@
 " Functionality
 set nocompatible | filetype indent plugin on | syn on
 set noswapfile
+set nobackup
 set nowrap
 set encoding=utf8
 
 if has("termguicolors") && $COLORTERM == 'truecolor'
-  set termguicolors " Enable True Color support
+    set termguicolors " Enable True Color support
 endif
 
 " VIM Plug
@@ -43,6 +44,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'yggdroot/indentline'
 Plug 'vim-scripts/gitignore'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
@@ -55,7 +57,6 @@ set splitright
 " Line Reference
 set number
 set relativenumber
-"set ruler
 
 " Proper Tabs
 set tabstop=4
@@ -68,11 +69,12 @@ set autoindent
 set smartindent
 set cindent
 
-" Fuzzy Finding
+" File Search
 set wildmenu
 set path+=**
 
-" Highlighting
+" Word Search and Highlight
+set colorcolumn=80
 set hlsearch
 set incsearch
 set cursorline
@@ -102,8 +104,8 @@ set noshowmode " Lightline or Airline display mode
 " ----------- Theme -----------
 set t_Co=256
 "let g:molokai_original = 1
-"let g:rehash256 = 1
 colorscheme molokai
+
 if has('terminal')
     let g:terminal_ansi_colors = [
         \ '#1F1F1F',
@@ -121,9 +123,13 @@ if has('terminal')
         \ '#66D9EF',
         \ '#FD5FF0',
         \ '#A1EFE4',
-        \ '#F8F8F2'
+        \ '#F8F8F0'
     \ ]
 endif
+
+highlight Pmenu guibg=#232526 guifg=#F8F8F0
+highlight PmenuSel guifg=#232526 guibg=#FD971F
+highlight WildMenu cterm=bold gui=bold guibg=#FD971F guifg=#232526
 
 " ----------- Airline -----------
 let g:airline_theme='molokai'
