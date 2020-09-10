@@ -69,7 +69,7 @@ set autoindent
 set smartindent
 set cindent
 
-" File Search
+" Find Files
 set wildmenu
 set path+=**
 
@@ -94,6 +94,9 @@ command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
 " Abbreviations
 cabbrev vsf vert sfind
 
+" File Type Settings
+"au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 """""""""""""""""""""""""""""""""""""
 " Plugins
