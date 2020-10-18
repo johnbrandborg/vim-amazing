@@ -19,9 +19,9 @@ a symbolic link.  (i.e. ~/.vimrc)
 [automatically](https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation) installed.
 When you first enter VIM, it will attempt to bootstrap all Plugins.
 
-The default install will use Airline with Powerline Fonts.  If Powerline Fonts are not available
-either disable the use of them (i.e. let g:airline_powerline_fonts = 0), or switch over to Lightline
-in the plugin list by changing the the commented entries.  
+The default install will use Airline, but you can find entries to switch over to Lightline
+if prefered.  Powerline Fonts can be used with Airline to make the interface look similar
+to the Terminal image above, by enabling them in the plugin section for Airline.
 
 If you are on Ubuntu though, installing Powerline fonts is pretty basic.
 

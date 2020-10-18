@@ -8,6 +8,7 @@ set noswapfile
 set nobackup
 set nowrap
 set encoding=utf8
+set autoread
 
 if has("termguicolors") && $COLORTERM == 'truecolor'
     set termguicolors " Enable True Color support
@@ -138,7 +139,7 @@ highlight WildMenu cterm=bold gui=bold guibg=#FD971F guifg=#232526
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1 " Disable if not available
+let g:airline_powerline_fonts = 0 " Set to 1 to use Powerline Fonts
 
 " ---------- Lightline ---------- 
 set laststatus=2 " Lightline needs this generally
