@@ -11,7 +11,7 @@ set encoding=utf8
 set autoread
 
 if has("termguicolors") && $COLORTERM == 'truecolor'
-    set termguicolors " Enable True Color support
+    set termguicolors  " Enable True Color support
 endif
 
 " VIM Plug
@@ -35,7 +35,7 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'itchyny/lightline.vim' " Airline alternative
+"Plug 'itchyny/lightline.vim'  " Airline alternative
 Plug 'tomasr/molokai'
 Plug 'valloric/youcompleteme', {'do': function('BuildYCM')}
 Plug 'preservim/nerdcommenter'
@@ -83,10 +83,14 @@ set cursorline
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-nnoremap <C-j> :resize -2<CR>
-nnoremap <C-k> :resize +2<CR>
-nnoremap <C-h> :vertical resize -2<CR>
-nnoremap <C-l> :vertical resize +2<CR>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <M-UP> :resize +2<CR>
+nnoremap <M-DOWN> :resize -2<CR>
+nnoremap <M-LEFT> :vertical resize -2<CR>
+nnoremap <M-RIGHT> :vertical resize +2<CR>
 nnoremap <silent> ,<space> :nohlsearch<CR>
 
 " Commands
@@ -103,7 +107,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Plugins
 """""""""""""""""""""""""""""""""""""
 
-set noshowmode " Lightline or Airline display mode
+set noshowmode  " Lightline or Airline display mode
 
 " ----------- Theme -----------
 set t_Co=256
@@ -139,10 +143,10 @@ highlight WildMenu cterm=bold gui=bold guibg=#FD971F guifg=#232526
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 0 " Set to 1 to use Powerline Fonts
+let g:airline_powerline_fonts = 0  " Set to 1 to use Powerline Fonts
 
 " ---------- Lightline ---------- 
-set laststatus=2 " Lightline needs this generally
+set laststatus=2  " Lightline needs this generally
 let g:lightline = {
     \ 'colorscheme': 'powerline',
     \ 'active': {
@@ -168,7 +172,7 @@ let g:netrw_liststyle = 3
 
 " ---------- Syntastic ----------
 let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1 " Not for everyone
+"let g:syntastic_auto_loc_list = 1  " Not for everyone
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 " The following can be used if you don't want to use YCM
@@ -188,3 +192,6 @@ autocmd VimEnter * :WildignoreFromGitignore
 nmap <leader>gs :G<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
+
+" -------- IndentLine ---------- 
+let g:vim_json_conceal = 0  " vim 8.1.2060+ JSON file quote fix
