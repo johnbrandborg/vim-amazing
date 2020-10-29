@@ -83,10 +83,10 @@ set cursorline
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 nnoremap <M-UP> :resize +2<CR>
 nnoremap <M-DOWN> :resize -2<CR>
 nnoremap <M-LEFT> :vertical resize -2<CR>
@@ -95,6 +95,8 @@ nnoremap <silent> ,<space> :nohlsearch<CR>
 
 " Commands
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
+command IndentLines2 noautocmd setlocal ts=2 sts=2 sw=2 | IndentLinesReset
+command IndentLines4 noautocmd setlocal ts=4 sts=4 sw=4 | IndentLinesReset
 
 " Abbreviations
 cabbrev vsf vert sfind
