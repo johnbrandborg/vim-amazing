@@ -78,20 +78,37 @@ set path+=**
 set colorcolumn=80
 set hlsearch
 set incsearch
-set cursorline
+"set cursorline
 
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+nnoremap <silent> ,<space> :nohlsearch<CR>
+" Easy Window Switching
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" Easy Window Resizing
 nnoremap <M-UP> :resize +2<CR>
 nnoremap <M-DOWN> :resize -2<CR>
 nnoremap <M-LEFT> :vertical resize -2<CR>
 nnoremap <M-RIGHT> :vertical resize +2<CR>
-nnoremap <silent> ,<space> :nohlsearch<CR>
+" Easy Buffer Switching
+nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>g :e#<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
 
 " Commands
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
@@ -146,6 +163,7 @@ let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 0  " Set to 1 to use Powerline Fonts
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ---------- Lightline ---------- 
 set laststatus=2  " Lightline needs this generally
@@ -169,23 +187,11 @@ nmap <leader>tt :TagbarToggle<CR>
 
 " ---------- NetRW ----------  
 let g:netrw_banner = 0
-let g:netrw_listhide=netrw_gitignore#Hide()
+let g:netrw_listhide = netrw_gitignore#Hide()
 let g:netrw_liststyle = 3
 
-" ---------- Syntastic ----------
-let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1  " Not for everyone
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-" The following can be used if you don't want to use YCM
-"let g:syntastic_c_checkers = ['gcc', 'make', 'splint']
-"let g:syntastic_python_checkers = ['pep8', 'pycodestyle', 'pylint', 'python']
-
 " ---------- YouCompleteMe ----------
-let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_always_populate_location_list = 1
-let g:ycm_clangd_uses_ycmd_caching = 0
-nnoremap <leader>yg :YcmCompleter GoTo<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " ---------- GitIgnore ---------- 
 autocmd VimEnter * :WildignoreFromGitignore
