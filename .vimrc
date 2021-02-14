@@ -78,7 +78,7 @@ set path+=**
 set colorcolumn=80
 set hlsearch
 set incsearch
-"set cursorline
+set cursorline
 
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
