@@ -10,7 +10,7 @@ set nowrap
 set encoding=utf8
 set autoread
 
-if has("termguicolors") && $COLORTERM == 'truecolor'
+if has("termguicolors")
     set termguicolors  " Enable True Color support
 endif
 
