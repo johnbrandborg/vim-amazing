@@ -47,6 +47,7 @@ Plug 'yggdroot/indentline'
 Plug 'vim-scripts/gitignore'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'ryanoasis/vim-devicons'  " Use a patched Font. https://www.nerdfonts.com/
 call plug#end()
 
 " General
@@ -147,7 +148,7 @@ highlight WildMenu cterm=bold gui=bold guibg=#FD971F guifg=#232526
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 0  " Set to 1 to use Powerline Fonts
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ---------- Lightline ---------- 
