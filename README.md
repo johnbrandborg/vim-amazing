@@ -19,12 +19,27 @@ a symbolic link.  (i.e. ~/.vimrc)
 [automatically](https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation) installed.
 When you first enter VIM, it will attempt to bootstrap all Plugins.
 
-The default install will use Airline and DevIcons so it's best to head over to Nerd Fonts,
-and get your favourite font with all the good stuff load in the terminal before using
-this VIM configuration.
+The default install will use [Airline](https://github.com/vim-airline/vim-airline) and
+[DevIcons](https://github.com/ryanoasis/vim-devicons) so it's best to head over to
+[Nerd Fonts](https://www.nerdfonts.com/font-downloads), and get your favourite font with
+all the good stuff loaded in the terminal before using this VIM configuration.
 
-https://www.nerdfonts.com/font-downloads
+### Auto Completion
 
+To achieve auto completion [You Complete Me](https://github.com/ycm-core/YouCompleteMe) will
+be installed, and the build will start automatically.
+
+Python is automatically included, but you can see I have included
+ * C/C++
+ * Rust
+ * TypeScript
+
+You may prefer to adjust this, by removing the parameters supplied to the install.py script
+in the VIM configuration.
+
+```
+./install.py --clangd-completer --rust-completer --ts-completer
+```
 
 ### Contribution guidelines
 
