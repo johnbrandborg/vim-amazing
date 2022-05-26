@@ -19,15 +19,12 @@ a symbolic link.  (i.e. ~/.vimrc)
 [automatically](https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation) installed.
 When you first enter VIM, it will attempt to bootstrap all Plugins.
 
-The default install will use Airline, but you can find entries to switch over to Lightline
-if prefered.  Powerline Fonts can be used with Airline to make the interface look similar
-to the Terminal image above, by enabling them in the plugin section for Airline.
+The default install will use Airline and DevIcons so it's best to head over to Nerd Fonts,
+and get your favourite font with all the good stuff load in the terminal before using
+this VIM configuration.
 
-If you are on Ubuntu though, installing Powerline fonts is pretty basic.
+https://www.nerdfonts.com/font-downloads
 
-```bash
-sudo apt install fonts-powerline
-```
 
 ### Contribution guidelines
 

@@ -28,14 +28,13 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    !./install.py --clangd-completer --rust-completer
+    !./install.py --clangd-completer --rust-completer --ts-completer
   endif
 endfunction
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'itchyny/lightline.vim'  " Airline alternative
 Plug 'tomasr/molokai'
 Plug 'valloric/youcompleteme', {'do': function('BuildYCM')}
 Plug 'preservim/nerdcommenter'
@@ -84,6 +83,8 @@ set cursorline
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType javascript map <buffer> <F5> :w<CR>:exec '!node' shellescape(@%, 1)<CR>
+autocmd FileType javascript imap <buffer> <F5> <esc>:w<CR>:exec '!node' shellescape(@%, 1)<CR>
 nnoremap <silent> ,<space> :nohlsearch<CR>
 " Easy Window Switching
 nnoremap <C-h> <C-w>h
