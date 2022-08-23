@@ -28,8 +28,7 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    " !./install.py --clangd-completer --rust-completer
-    !./install.py
+    !./install.py --clangd-completer --rust-completer --ts-completer
   endif
 endfunction
 
@@ -90,6 +89,8 @@ autocmd BufWinLeave * call clearmatches()
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType javascript map <buffer> <F5> :w<CR>:exec '!node' shellescape(@%, 1)<CR>
+autocmd FileType javascript imap <buffer> <F5> <esc>:w<CR>:exec '!node' shellescape(@%, 1)<CR>
 nnoremap <silent> ,<space> :nohlsearch<CR>
 " Easy Window Switching
 nnoremap <C-h> <C-w>h
@@ -111,7 +112,6 @@ command IndentLines4 noautocmd setlocal ts=4 sts=4 sw=4 | IndentLinesReset
 cabbrev vsf vert sfind
 
 " File Type Settings
-"au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 """""""""""""""""""""""""""""""""""""

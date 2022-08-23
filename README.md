@@ -19,14 +19,26 @@ a symbolic link.  (i.e. ~/.vimrc)
 [automatically](https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation) installed.
 When you first enter VIM, it will attempt to bootstrap all Plugins.
 
-The default install will use Airline, but you can find entries to switch over to Lightline
-if prefered.  Powerline Fonts can be used with Airline to make the interface look similar
-to the Terminal image above, by enabling them in the plugin section for Airline.
+The default install will use [Airline](https://github.com/vim-airline/vim-airline) and
+[DevIcons](https://github.com/ryanoasis/vim-devicons) so it's best to head over to
+[Nerd Fonts](https://www.nerdfonts.com/font-downloads), and get your favourite font with
+all the good stuff loaded in the terminal before using this VIM configuration.
 
-If you are on Ubuntu though, installing Powerline fonts is pretty basic.
+### Auto Completion
 
-```bash
-sudo apt install fonts-powerline
+To achieve auto completion [You Complete Me](https://github.com/ycm-core/YouCompleteMe) will
+be installed, and the build will start automatically.
+
+Python is automatically included, but you can see I have included
+ * C/C++
+ * Rust
+ * TypeScript
+
+You may prefer to adjust this, by removing the parameters supplied to the install.py script
+in the VIM configuration.
+
+```
+./install.py --clangd-completer --rust-completer --ts-completer
 ```
 
 ### Contribution guidelines
