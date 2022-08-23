@@ -102,6 +102,14 @@ nnoremap <M-UP> :resize +2<CR>
 nnoremap <M-DOWN> :resize -2<CR>
 nnoremap <M-LEFT> :vertical resize -2<CR>
 nnoremap <M-RIGHT> :vertical resize +2<CR>
+" Auto closing Bracket and Quote (CTRL-V to bypass)
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
 " Commands
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
