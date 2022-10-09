@@ -111,6 +111,10 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+" Visual Text quotations and comma wrapping
+vnoremap <leader>" :s/\%V\(.*\)\%V/"\1"/<CR>
+vnoremap <leader>' :s/\%V\(.*\)\%V/'\1'/<CR>
+
 " Commands
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
 command IndentLines2 noautocmd setlocal ts=2 sts=2 sw=2 | IndentLinesReset
