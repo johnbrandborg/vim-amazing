@@ -190,3 +190,4 @@ nmap <leader>gj :diffget //3<CR>
 
 " -------- IndentLine ----------
 let g:vim_json_conceal = 0  " vim 8.1.2060+ JSON file quote fix
+let g:indentLine_char_list = ['▏', '┊', '┆', '¦']
