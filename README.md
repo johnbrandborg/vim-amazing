@@ -41,6 +41,29 @@ in the VIM configuration.
 ./install.py --clangd-completer --rust-completer --ts-completer
 ```
 
+### NeoVIM
+
+While I have been using VIM for some time now, I am exploring the use of NeoVIM with it's
+native LSP support.  Under the nvim directory you can find the trial configuration
+I have been using on MacOS.
+
+Similar to the VIM RC file, create a symbolic link to the nvim directory. (i.e. ~/.config/nvim)
+
+LSP's will need to be installed for each langauge.  Currently the configur has only Python and
+Rust, but it's easy enough to add TypeScript.  Many more languages are support however.
+
+Rust LSP
+`rustup component add rust-analyzer`
+
+Python LSP
+`npm install -g pyright`
+
+LSP References:
+https://github.com/neovim/nvim-lspconfig
+https://github.com/rust-lang/rust-analyzer
+https://github.com/microsoft/pyright
+https://github.com/typescript-language-server/typescript-language-server
+
 ### Contribution guidelines
 
 My philosophy is to make usable or meaningful adjustments only.
@@ -48,6 +71,8 @@ My philosophy is to make usable or meaningful adjustments only.
 * Keep it simple.
 * Keep it simple.
 * Keep it simple.
+
+Suggested configuration by Plugins is generally used or is very close.
 
 ### Who do I talk to?
 
