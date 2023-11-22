@@ -128,9 +128,10 @@ inoremap [<bs> [
 inoremap {<bs> {
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
-" Wrap visual selection with quotations per line
-vnoremap <leader>" :s/\%V\(.*\)\%V/"\1"/<CR>
-vnoremap <leader>' :s/\%V\(.*\)\%V/'\1'/<CR>
+
+" Visual Text quotations and comma wrapping
+vnoremap <leader>" :s/\%V\(.*\)\%V/"\1"/<CR>:nohlsearch<CR>
+vnoremap <leader>' :s/\%V\(.*\)\%V/'\1'/<CR>:nohlsearch<CR>
 
 " Commands
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
