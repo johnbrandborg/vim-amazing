@@ -130,7 +130,7 @@ if command_exists direnv; then
 fi
 
 # Brew
-if command_exists brew; then
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
