@@ -111,29 +111,41 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+command_exists() {
+  command -v "$@" >/dev/null 2>&1
+}
+
 # Environment
 alias clear='clear; print ${(pl:$LINES::\n:):-}'
 alias start-ssh-agent='eval "$(ssh-agent -s)"'
-export AWS_DEFAULT_PROFILE=tu-dev
 export EDITOR='vim'
-export PATH=$PATH:~/.local/bin:~/.cargo/bin
-export CODEARTIFACT_AUTH_TOKEN=''
 
-# Brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-#alias brew="env PATH="${PATH//$(pyenv root)\/shims:/}" brew"
-
-# Python Environments
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -d ~/.local/bin ]; then
+    export PATH=$PATH:~/.local/bin
+fi
 
 # Direnv
-eval "$(direnv hook zsh)"
+if command_exists direnv; then
+    eval "$(direnv hook zsh)"
+fi
 
-# Power Level 10k
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
+# Brew
+if command_exists brew; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Python Environments
+if command_exists pyenv; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# Rust
+if command_exists cargo; then
+    export PATH=$PATH:~/.cargo/bin
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

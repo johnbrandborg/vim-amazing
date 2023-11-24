@@ -16,20 +16,20 @@ endif
 
 " VIM Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " You Complete Me Build
 function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py --clangd-completer --rust-completer --ts-completer
-  endif
+    " info is a dictionary with 3 fields
+    " - name:   name of the plugin
+    " - status: 'installed', 'updated', or 'unchanged'
+    " - force:  set on PlugInstall! or PlugUpdate!
+    if a:info.status == 'installed' || a:info.force
+        !./install.py --clangd-completer --rust-completer --ts-completer
+    endif
 endfunction
 
 call plug#begin('~/.vim/plugged')
@@ -81,6 +81,8 @@ set colorcolumn=80
 set hlsearch
 set incsearch
 set cursorline
+
+" Whitespace detection
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#f92672
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -88,13 +90,13 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Word Processor mode
-func! WordProcessorMode()
- setlocal textwidth=80
- setlocal smartindent
- setlocal spell spelllang=en_us
- setlocal noexpandtab
-endfu
-com! WordProcessor call WordProcessorMode()
+function! WordProcessorMode()
+    setlocal textwidth=80
+    setlocal smartindent
+    setlocal spell spelllang=en_us
+    setlocal noexpandtab
+endfunction
+command! WordProcessor call WordProcessorMode()
 
 " Mappings
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
@@ -116,22 +118,42 @@ nnoremap <M-LEFT> :vertical resize -2<CR>
 nnoremap <M-RIGHT> :vertical resize +2<CR>
 
 " Auto closing Bracket and Quote (CTRL-V before, or Backspace after to bypass)
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap "<bs> "
-inoremap '<bs> '
-inoremap (<bs> (
-inoremap [<bs> [
-inoremap {<bs> {
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+function! AutoCloseMode(switch = 'on')
+    " If AutoCloseOff is run multiple times, if inoremap aren't present,
+    " errors are raised.
+    inoremap " ""<left>
+    inoremap ' ''<left>
+    inoremap ( ()<left>
+    inoremap [ []<left>
+    inoremap { {}<left>
+    inoremap "<bs> "
+    inoremap '<bs> '
+    inoremap (<bs> (
+    inoremap [<bs> [
+    inoremap {<bs> {
+    inoremap {<CR> {<CR>}<ESC>O
+    if a:switch == 'off'
+        iunmap "
+        iunmap '
+        iunmap (
+        iunmap [
+        iunmap {
+        iunmap "<bs>
+        iunmap '<bs>
+        iunmap (<bs>
+        iunmap [<bs>
+        iunmap {<bs>
+        iunmap {<CR>
+    endif
+endfunction
+command! AutoCloseOn call AutoCloseMode()
+command! AutoCloseOff call AutoCloseMode('off')
 
-" Visual Text quotations and comma wrapping
+" Wrap visual selection with quotations per line
 vnoremap <leader>" :s/\%V\(.*\)\%V/"\1"/<CR>:nohlsearch<CR>
+vnoremap <leader>", :s/\%V\(.*\)\%V/"\1",/<CR>:nohlsearch<CR>
 vnoremap <leader>' :s/\%V\(.*\)\%V/'\1'/<CR>:nohlsearch<CR>
+vnoremap <leader>', :s/\%V\(.*\)\%V/'\1'/<CR>:nohlsearch<CR>
 
 " Commands
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
@@ -148,12 +170,10 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Plugins
 """""""""""""""""""""""""""""""""""""
 
-set noshowmode  " Hide --INSERT-- mode. Lightline or Airline show this instead
-
 " ----------- Theme -----------
 set t_Co=256
-"let g:molokai_original = 1
 colorscheme molokai
+"let g:molokai_original = 1
 
 if has('terminal')
     let g:terminal_ansi_colors = [
@@ -181,6 +201,7 @@ highlight PmenuSel guifg=#232526 guibg=#FD971F
 highlight WildMenu cterm=bold gui=bold guibg=#FD971F guifg=#232526
 
 " ----------- Airline -----------
+set noshowmode  " Hide --INSERT-- mode. Lightline or Airline show this instead
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
