@@ -149,3 +149,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ASDF Version Manager (Brew installed)
+[[ ! -f $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh ]] || source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh

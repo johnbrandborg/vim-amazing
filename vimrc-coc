@@ -81,7 +81,7 @@ set path+=**
 set colorcolumn=80
 set hlsearch
 set incsearch
-set cursorline
+"set cursorline
 
 " Whitespace detection
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#f92672
@@ -173,28 +173,20 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ----------- Theme -----------
 set t_Co=256
-colorscheme molokai
 "let g:molokai_original = 1
+colorscheme molokai
 
+" Molokai Colors in the Terminal
 if has('terminal')
+    " Dark, Red, Green, Yellow
+    " Blue, Purple, Aque, Orange
+    " Bright Red, Green, Yellow, Blue
+    " Bright Purple, Aque, Orange, Light
     let g:terminal_ansi_colors = [
-        \ '#1F1F1F',
-        \ '#F92672',
-        \ '#A6E22E',
-        \ '#E69F66',
-        \ '#6699DF',
-        \ '#FD5FF0',
-        \ '#A1EFE4',
-        \ '#75715E',
-        \ '#3E3D32',
-        \ '#F92672',
-        \ '#A6E22E',
-        \ '#E6DB74',
-        \ '#66D9EF',
-        \ '#FD5FF0',
-        \ '#A1EFE4',
-        \ '#F8F8F0'
-    \ ]
+        \'#1F1F1F', '#F92672', '#A6E22E', '#E69F66',
+        \'#6699DF', '#FD5FF0', '#A1EFE4', '#75715E',
+        \'#3E3D32', '#F92672', '#A6E22E', '#E6DB74',
+        \'#66D9EF', '#FD5FF0', '#A1EFE4', '#F8F8F0']
 endif
 
 highlight Pmenu guibg=#232526 guifg=#F8F8F0
