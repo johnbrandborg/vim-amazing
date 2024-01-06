@@ -1,0 +1,80 @@
+"""""""""""""""""""""""""""""""""""""
+" Configuration Section
+"""""""""""""""""""""""""""""""""""""
+
+" Functionality
+set nocompatible | filetype indent plugin on | syntax on
+set nowrap
+set encoding=utf8
+
+if has("termguicolors")
+    set termguicolors  " Enable True Color support
+endif
+
+" General
+set mouse=a
+set showcmd
+set splitbelow
+set splitright
+
+" Color Theme
+colorscheme desert
+highlight CursorLineNr guifg=indianred
+highlight CursorLine guibg=grey25
+highlight LineNr guifg=DarkGrey
+highlight WildMenu guibg=indianred
+
+" Line Reference
+set number
+set relativenumber
+
+" Proper Tabs
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+
+" Indentation
+set autoindent
+set smartindent
+set cindent
+
+" Find Files
+set wildmenu
+set path+=**
+
+" Word Search and Highlight
+set hlsearch
+set incsearch
+set cursorline
+
+" Word Processor mode
+function! WordProcessorMode()
+    setlocal textwidth=80
+    setlocal smartindent
+    setlocal spell spelllang=en_us
+    setlocal noexpandtab
+endfunction
+command! WordProcessor call WordProcessorMode()
+
+" Mappings
+nnoremap <silent> ,<space> :nohlsearch<CR>
+
+" Easy Window Switching
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Easy Window Resizing
+nnoremap <M-UP> :resize +2<CR>
+nnoremap <M-DOWN> :resize -2<CR>
+nnoremap <M-LEFT> :vertical resize -2<CR>
+nnoremap <M-RIGHT> :vertical resize +2<CR>
+
+" Commands
+command IndentLines2 noautocmd setlocal ts=2 sts=2 sw=2
+command IndentLines4 noautocmd setlocal ts=4 sts=4 sw=4
+
+" Abbreviations
+cabbrev vsf vert sfind
