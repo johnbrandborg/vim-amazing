@@ -81,7 +81,7 @@ set path+=**
 set colorcolumn=80
 set hlsearch
 set incsearch
-"set cursorline
+set cursorline
 
 " Whitespace detection
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#f92672
